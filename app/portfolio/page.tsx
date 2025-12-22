@@ -22,6 +22,7 @@ const projects: Project[] = [
     description: 'Projekt strony internetowej dla klienta. Nowoczesny design z pełną responsywnością i optymalizacją pod kątem wydajności.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     image: '/rosa.png',
+    demoUrl: 'https://rosakrotoszyn.pl/',
   },
 ]
 
@@ -29,7 +30,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-24 bg-gradient-to-b from-gray-900 to-gray-800">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-24 bg-gray-800/50">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             Portfolio - Realizacje Stron Internetowych
@@ -47,62 +48,107 @@ export default function Portfolio() {
           <div className="max-w-4xl mx-auto">
             {projects.map((project) => (
               <ScrollReveal key={project.id}>
-                <div
-                  className="group bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-primary-500 transition-all duration-300 transform hover:scale-105"
-                >
-                  {project.image && (
-                    <div className="relative h-64 w-full overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={`${project.title} - Realizacja strony internetowej przez programistę z Krotoszyna`}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-400 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-400 mb-4 text-sm leading-relaxed">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 text-xs bg-gray-700 text-gray-300 rounded border border-gray-600"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-4">
-                      {project.demoUrl && (
-                        <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-primary-400 hover:text-primary-300 transition-colors text-sm font-medium"
-                        >
+                {project.demoUrl ? (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block group bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-primary-500 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                  >
+                    {project.image && (
+                      <div className="relative h-64 w-full overflow-hidden">
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} - Realizacja strony internetowej przez programistę z Krotoszyna`}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-1 text-xs bg-gray-700 text-gray-300 rounded border border-gray-600"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-4">
+                        <span className="flex items-center text-primary-400 hover:text-primary-300 transition-colors text-sm font-medium">
                           <ExternalLink className="w-4 h-4 mr-2" />
-                          Demo
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-primary-400 hover:text-primary-300 transition-colors text-sm font-medium"
-                        >
-                          <Github className="w-4 h-4 mr-2" />
-                          GitHub
-                        </a>
-                      )}
+                          Zobacz stronę
+                        </span>
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex items-center text-primary-400 hover:text-primary-300 transition-colors text-sm font-medium"
+                          >
+                            <Github className="w-4 h-4 mr-2" />
+                            GitHub
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <div
+                    className="group bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-primary-500 transition-all duration-300 transform hover:scale-105"
+                  >
+                    {project.image && (
+                      <div className="relative h-64 w-full overflow-hidden">
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} - Realizacja strony internetowej przez programistę z Krotoszyna`}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-1 text-xs bg-gray-700 text-gray-300 rounded border border-gray-600"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-4">
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-primary-400 hover:text-primary-300 transition-colors text-sm font-medium"
+                          >
+                            <Github className="w-4 h-4 mr-2" />
+                            GitHub
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </ScrollReveal>
             ))}
           </div>

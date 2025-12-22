@@ -24,7 +24,7 @@ export default function OMnie() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-24 bg-gradient-to-b from-gray-900 to-gray-800">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-24 bg-gray-800/50">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             O mnie
