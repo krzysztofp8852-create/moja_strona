@@ -47,10 +47,8 @@ export default function Kontakt() {
     setIsSubmitting(true)
 
     try {
-      // Send email via Netlify Function
-      const functionUrl = '/.netlify/functions/send-email'
-      
-      const response = await fetch(functionUrl, {
+      // Send email via Vercel API Route
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
