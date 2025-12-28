@@ -28,7 +28,7 @@ const packages: Package[] = [
       'Nowoczesny i estetyczny design',
       'Łatwy kontakt z klientami dzięki formularzowi',
     ],
-    price: '1 800 – 2 800 zł',
+    price: '1 200 – 2 400 zł',
     cta: 'Zamów teraz – wyróżnij swoją firmę w sieci!',
   },
   {
@@ -42,7 +42,7 @@ const packages: Package[] = [
       'Responsywny design dopasowany do wszystkich urządzeń',
       'Podstawowe SEO, by Twoja strona była widoczna w Google',
     ],
-    price: '3 500 – 5 000 zł',
+    price: '2 800 – 4 800 zł',
     cta: 'Zamów teraz – zarządzaj swoją stroną samodzielnie!',
     highlight: true,
   },
@@ -57,7 +57,7 @@ const packages: Package[] = [
       'Zaawansowane SEO, optymalizacja prędkości i bezpieczeństwa',
       'Dodatkowe funkcje: formularze, galerie, blog, system rezerwacji itp.',
     ],
-    price: '6 000 – 12 000 zł',
+    price: '5 600 – 10 000 zł',
     cta: 'Zamów teraz – rozwiń biznes w internecie!',
   },
 ]

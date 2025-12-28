@@ -48,7 +48,9 @@ export default function Kontakt() {
 
     try {
       // Send email via Netlify Function
-      const response = await fetch('/.netlify/functions/send-email', {
+      const functionUrl = '/.netlify/functions/send-email'
+      
+      const response = await fetch(functionUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,18 +62,26 @@ export default function Kontakt() {
         }),
       })
 
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('Response error:', response.status, errorText)
+        throw new Error(`Błąd serwera: ${response.status}`)
+      }
+
       const data = await response.json()
 
-      if (response.ok && data.success) {
+      if (data.success) {
         setIsSubmitted(true)
         setFormData({ name: '', email: '', message: '' })
         setTimeout(() => setIsSubmitted(false), 5000)
       } else {
         throw new Error(data.message || 'Błąd podczas wysyłania formularza')
       }
-    } catch (error) {
-      console.error('Error:', error)
-      setErrors({ submit: 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.' })
+    } catch (error: any) {
+      console.error('Error submitting form:', error)
+      setErrors({ 
+        submit: error.message || 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie lub skontaktuj się bezpośrednio przez email.' 
+      })
     } finally {
       setIsSubmitting(false)
     }
