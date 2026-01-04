@@ -24,6 +24,14 @@ const projects: Project[] = [
     image: '/rosa.png',
     demoUrl: 'https://rosakrotoszyn.pl/',
   },
+  {
+    id: 2,
+    title: 'Mariusz - Chiroterapeuta',
+    description: 'Strona dla Chiroterapeuty z Krotoszyna, zawiera systemem bookowania, panel admina, oraz potwierdzanie wizyty poprzez e-mail',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'System rezerwacji', 'Panel admina'],
+    image: '/mariusz.png',
+    demoUrl: 'https://www.chiromedic.pl/',
+  },
 ]
 
 export default function Portfolio() {
@@ -45,7 +53,8 @@ export default function Portfolio() {
       {/* Projects Grid */}
       <ScrollReveal>
         <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project) => (
               <ScrollReveal key={project.id}>
                 {project.demoUrl ? (
@@ -151,6 +160,7 @@ export default function Portfolio() {
                 )}
               </ScrollReveal>
             ))}
+            </div>
           </div>
         </section>
       </ScrollReveal>
