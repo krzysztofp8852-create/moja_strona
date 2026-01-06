@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface Particle {
   x: number
@@ -9,12 +9,15 @@ interface Particle {
   vy: number
   radius: number
   opacity: number
+  baseVx: number
+  baseVy: number
 }
 
 export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<Particle[]>([])
   const animationFrameRef = useRef<number>()
+  const mouseRef = useRef<{ x: number; y: number }>({ x: -1000, y: -1000 })
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -31,6 +34,21 @@ export default function ParticlesBackground() {
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
+    // Track mouse position
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = {
+        x: e.clientX,
+        y: e.clientY,
+      }
+    }
+
+    const handleMouseLeave = () => {
+      mouseRef.current = { x: -1000, y: -1000 }
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseleave', handleMouseLeave)
+
     // Create particles
     const particleCount = Math.min(80, Math.floor((window.innerWidth * window.innerHeight) / 15000))
     const particles: Particle[] = []
@@ -43,6 +61,8 @@ export default function ParticlesBackground() {
         vy: (Math.random() - 0.5) * 0.5,
         radius: Math.random() * 2 + 1,
         opacity: Math.random() * 0.5 + 0.2,
+        baseVx: (Math.random() - 0.5) * 0.5,
+        baseVy: (Math.random() - 0.5) * 0.5,
       })
     }
 
@@ -52,8 +72,31 @@ export default function ParticlesBackground() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+      const mouse = mouseRef.current
+      const mouseRadius = 150 // Promień wpływu kursora
+
       // Update and draw particles
       particles.forEach((particle, i) => {
+        // Calculate distance to mouse
+        const dx = particle.x - mouse.x
+        const dy = particle.y - mouse.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        // React to cursor
+        if (distance < mouseRadius) {
+          const force = (mouseRadius - distance) / mouseRadius
+          const angle = Math.atan2(dy, dx)
+          const repelForce = force * 2
+
+          // Add repulsion force
+          particle.vx = particle.baseVx + Math.cos(angle) * repelForce
+          particle.vy = particle.baseVy + Math.sin(angle) * repelForce
+        } else {
+          // Gradually return to base velocity
+          particle.vx += (particle.baseVx - particle.vx) * 0.05
+          particle.vy += (particle.baseVy - particle.vy) * 0.05
+        }
+
         // Update position with wave effect
         particle.x += particle.vx
         particle.y += particle.vy + Math.sin(Date.now() * 0.001 + i) * 0.3
@@ -94,6 +137,8 @@ export default function ParticlesBackground() {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas)
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseleave', handleMouseLeave)
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }

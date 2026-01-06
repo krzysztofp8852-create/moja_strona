@@ -3,6 +3,14 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import dynamic from 'next/dynamic'
+
+const Logo3D = dynamic(() => import('./Logo3D'), { 
+  ssr: false,
+  loading: () => (
+    <div className="w-12 h-12" />
+  )
+})
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,8 +27,8 @@ export default function Navigation() {
     <nav className="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-xl font-bold text-primary-400 hover:text-primary-300 transition-colors">
-            KP
+          <Link href="/" className="hover:opacity-80 transition-opacity">
+            <Logo3D />
           </Link>
 
           {/* Desktop Navigation */}

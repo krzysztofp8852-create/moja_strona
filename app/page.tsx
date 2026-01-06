@@ -6,19 +6,19 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-32" aria-label="Główna sekcja - stworzenie strony internetowej w Krotoszynie">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary-400 via-primary-300 to-primary-500 bg-clip-text text-transparent">
-              Tworzenie Stron Internetowych 
+              Tworzenie Strony Internetowej w Krotoszynie
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-4">
               Programista Stron WWW | Web Developer | Krotoszyn
             </p>
             <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-10">
-              Profesjonalne tworzenie stron internetowych. 
+              Profesjonalne <strong>stworzenie strony internetowej w Krotoszynie</strong>. 
               Tworzę nowoczesne, responsywne strony WWW, sklepy internetowe oraz strony dla firm. 
-              Tanie i profesjonalne strony internetowe na zamówienie.
+              Tanie i profesjonalne strony internetowe na zamówienie. Obsługuję również <strong>Jarocin, Ostrów Wielkopolski i Kalisz</strong>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -40,7 +40,7 @@ export default function Home() {
       </section>
 
       {/* Quick Links Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 bg-gray-800/50">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 bg-gray-800/50" aria-label="Usługi tworzenia stron internetowych">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
@@ -105,13 +105,13 @@ export default function Home() {
 
       {/* CTA Section */}
       <ScrollReveal>
-        <section className="px-4 sm:px-6 lg:px-8 py-20">
+        <section className="px-4 sm:px-6 lg:px-8 py-20" aria-label="Kontakt - stworzenie strony internetowej">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Gotowy na rozpoczęcie projektu?
             </h2>
             <p className="text-xl text-gray-400 mb-8">
-              Skontaktuj się ze mną, a wspólnie stworzymy coś wyjątkowego.
+              Skontaktuj się ze mną, a wspólnie stworzymy profesjonalną stronę internetową dla Twojej firmy w Krotoszynie lub okolicach.
             </p>
             <Link
               href="/kontakt"
