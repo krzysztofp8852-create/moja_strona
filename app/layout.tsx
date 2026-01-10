@@ -52,7 +52,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'google-site-verification-code', // Tutaj należy dodać kod weryfikacji Google Search Console
+    // Dodaj kod weryfikacji z Google Search Console:
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // yahoo: 'your-yahoo-verification-code',
   },
   category: 'Web Development',
 }
@@ -214,6 +217,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#38bdf8" />
+        {/* Google Search Console Verification - dodaj kod z Search Console */}
+        {/* <meta name="google-site-verification" content="your-verification-code" /> */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

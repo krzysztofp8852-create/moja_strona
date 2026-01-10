@@ -1,0 +1,21 @@
+{
+  "name": "Krzysztof Pabich - Programista Stron Internetowych",
+  "short_name": "Krzysztof Pabich",
+  "description": "Stworzenie strony internetowej w Krotoszynie - profesjonalne tworzenie stron WWW, sklepów internetowych i stron dla firm",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#38bdf8",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "developer", "web development"],
+  "lang": "pl",
+  "dir": "ltr"
+}

@@ -6,8 +6,11 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# Pliki statyczne z folderu public/ są automatycznie dostępne przed redirectami
+# Redirect dla routingu SPA - tylko dla ścieżek, które nie są plikami statycznymi
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "/*"
+to = "/index.html"
+status = 200
+# Netlify automatycznie pomija pliki statyczne (.html, .css, .js, .png, etc.) z tego redirectu
 
