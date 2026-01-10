@@ -51,6 +51,9 @@ export default function OMnie() {
                     priority
                   />
                 </div>
+                <p className="text-center text-gray-400 text-sm mt-4 italic">
+                  To nie AI :D
+                </p>
               </div>
               
               {/* Text Content */}
