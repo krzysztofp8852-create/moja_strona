@@ -19,7 +19,7 @@ const projects: Project[] = [
   {
     id: 1,
     title: 'Rosa',
-    description: 'Projekt strony internetowej dla klienta. Nowoczesny design z pełną responsywnością i optymalizacją pod kątem wydajności.',
+    description: 'Projekt strony internetowej dla klienta. Nowoczesny design z pełną responsywnością i optymalizacją pod kątem wydajności. Posiada panel admina z możliwościami np. dodawania nowych produktów, kategorii, zmieniania cen i wiele więcej.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     image: '/rosa.png',
     demoUrl: 'https://rosakrotoszyn.pl/',
@@ -27,7 +27,7 @@ const projects: Project[] = [
   {
     id: 2,
     title: 'Mariusz - Chiroterapeuta',
-    description: 'Strona dla Chiroterapeuty z Krotoszyna, zawiera systemem bookowania, panel admina, oraz potwierdzanie wizyty poprzez e-mail',
+    description: 'Strona dla Chiroterapeuty z Krotoszyna, zawiera systemem bookowania, panel admina, oraz potwierdzanie wizyty poprzez e-mail i SMS z możliwością jej odwołania przez klienta',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'System rezerwacji', 'Panel admina'],
     image: '/mariusz.png',
     demoUrl: 'https://www.chiromedic.pl/',
